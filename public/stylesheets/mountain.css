@@ -1,0 +1,102 @@
+
+body
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.zoom
+{
+	width: 100%;
+	height: 1000px;
+	position: relative;
+	overflow: hidden;
+	background-size: cover;
+}
+.zoom:before
+{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 200px;
+	z-index: 1000;
+	background: linear-gradient(transparent, #fff);
+}
+.zoom #layer1
+{
+	position: absolute;
+	left: 40%;
+	width: 100%;
+	transform: translateX(-50%);
+	z-index: 10;
+}
+.zoom #layer2
+{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 9;
+	transform: translateX(10%);
+}
+@media (max-width: 1200px)
+{
+	.zoom #layer1
+	{
+		bottom: 10px;
+		opacity: 0.3;
+	}
+	.zoom #layer2
+	{
+		right: 80px;
+		opacity: 0.3;
+	}
+}
+@media (max-width: 1100px)
+{
+	.zoom #layer1
+	{
+
+		display: none;
+	}
+	.zoom #layer2
+	{
+		display: none;
+	}
+}
+
+.zoom #text
+{
+	position: absolute;
+	bottom: -1000px;
+	width: 100%;
+	/*Transform function for a 2d translation
+	which moves an element on the y-axis by 
+	the given value. Note that the y-axis 
+	increases vertically downwards: positive
+	lengths shift the element down, while negative
+	lengths shift it up.*/
+}
+.meow2
+{
+	padding: 100px;
+	box-sizing: border-box;
+	font-family: consolas;
+}
+.meow2 h1
+{
+	margin: 0;
+	padding: 0;
+	font-size: 4em;
+}
+.meow2 p
+{
+	font-size: 1.2em;
+}
+
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>HOME</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/parallax.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+    <header>
+      <a class="logo">KingsVpunjaB</a>
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/ocr">New</a></li>
+          <% if(!currentUser){ %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">SignUp</a></li>
+          <% } else{ %>
+            <li><a href="/logout">LogOut</a></li>
+            <% } %>
+          <li><a href="/aboutus">AboutUs</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </header>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.menu-toggle').click(function(){
+          $('ul').toggleClass('active');
+        })
+      })
+    </script>
+
+  <div  class="banner">
+     <div class="container">
+      <div class="flashy">
+        <% if(error && error.length > 0){ %>
+          <div class="error"><%= error %></div>
+      <% } %>
+      <% if(success && success.length > 0){ %>
+        <div class="success"><%= success %></div>
+      <% } %>
+      </div>
+        <div class="centered">
+            <a href="/myform/view" class="button">View</a>
+            <a href="/ocr" class="button">New</a>
+        </div>
+      </div> 
+  </div>
+
+
+    <!-- for navbar -->
+    <script type="text/javascript">
+      window.addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0)
+      })
+    </script>
+    <!-- for button effects -->
+     <script type="text/javascript">
+      window.addEventListener("scroll", function(){
+        var centered = document.querySelector(".centered");
+        centered.classList.toggle("sticky", window.scrollY > 0)
+      })
+    </script>
+
+<section class="bound">
+  <div></div>
+</section>  
+<section class="meow">
+  <h1 class="meowh1">help covid workers</h1>
+  <p class="meowp">
+Amid the Corona Crisis, it is the Health Department which has been acting as a guardian during this tough time in order to protect us. In order to keep a check on it and for making new protective decisions, all the data regarding the patients and availability of resources from everywhere in the country is being uploaded and reported to the Ministry of Health and Family Welfare. 
+
+For fulfillment of this purpose, the ground duty health workers have to go door to door for conducting surveys of the patients and fill the data in forms by hand. Once data is collected it is stored online. Filling all the fields manually from the form is time consuming and exhausting.
+</p>
+</section> 
+<section class="bound">
+  <div></div>
+</section>    
+
+<!-- for navbar -->
+<script type="text/javascript">
+  window.addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0)
+  })
+</script>
+<!-- pointer -->
+<script type="text/javascript">
+  $(document).mousemove(function(e){
+    $('.pointer').css({left:e.pageX,top:e.pageY})
+  })
+</script>
+
+
+<section class="parallax">
+<div class="bgimg-1">
+<div class="caption">
+<span class="border1">Why our app?</span>
+</div>
+</div>
+
+<div class="para">
+<p>Data security is of utmost importance for any organization. Paper documents are easily prone to loss or damage. Papers can be misplaced, stolen, or destroyed by natural elements such as moisture, pests, and fire. However, this is not the case with data that is scanned, analyzed, and stored in digital formats. Furthermore, the access to these digital documents can also be minimized to prevent mishandling of the digitized data. </p>
+</div>
+
+<div class="bgimg-2">
+<div class="caption">
+<span class="border">HIGH ACCURACY</span>
+</div>
+</div>
+
+<div class="para">
+<p>One of the major challenges of data entry is inaccuracy. Automated data entry tools such as OCR data entry result in reduced errors and inaccuracies, resulting in efficient data entry. Besides, problems like data loss can also be successfully tackled by OCR data entry. As there is no manpower involved, the issues such as keying in wrong information accidentally or otherwise can be eliminated.</p>
+</div>
+
+<div class="bgimg-3">
+<div class="caption">
+<span class="border">Superior Data Security </span>
+</div>
+</div>
+
+<div class="para">
+<p>Data security is of utmost importance for any organization. Paper documents are easily prone to loss or damage. Papers can be misplaced, stolen, or destroyed by natural elements such as moisture, pests, and fire. However, this is not the case with data that is scanned, analyzed, and stored in digital formats. Furthermore, the access to these digital documents can also be minimized to prevent mishandling of the digitized data. </p>
+</div>
+
+<div class="bgimg-4">
+<div class="caption">
+<span class="border">Storage Space</span>
+</div>
+</div>
+
+<div class="para">
+<p>Scanned documents can be simply stored in an electronic format in servers, eradicating the need for maintaining huge paper files. OCR data entry serves as one of the best tools to implement "Paperless Approach".</p>
+</div>
+
+<div class="bgimg-5">
+<div class="caption">
+<span class="border">Makes documents editable</span>
+</div>
+</div>
+
+<div class="para">
+<p>Data is need to be updated most of the time and doing same with paper documents is not possible. OCR can be of great help when there are contents which have to be constantly updated or regularly changed. </p>
+</div>
+</section>   
+
+</body>
+</html>

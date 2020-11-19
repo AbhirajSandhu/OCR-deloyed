@@ -1,0 +1,199 @@
+* 
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body
+{
+	overflow: hidden;
+}
+.mybody
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #208365;
+	width: 1535px;
+}
+header ul li a
+{
+	font-size: 20px;
+}
+header ul li a:hover
+{
+	font-size: 27px;
+}
+header.sticky
+{
+	 padding: 20px 100px;
+	 background: #001133;
+}
+header .logo:hover
+{
+	border-radius: 40px;
+	padding: 20px 30px;
+	font-size: 3em;
+	background: #001133;
+	color: #ffffb3;
+}
+.container
+{
+	position: relative;
+	width: 100%;
+	max-width: 1100px;
+	margin: 20px;
+	height: 600px;
+	background: #122647;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.formBx
+{
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.formBx form
+{
+	position: relative;
+	width: 100%;
+	padding: 0 0 0 75px;
+}
+.formBx form h2
+{
+	color: #fff;
+	font-weight: 500;
+	font-size: 2em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 40px;
+
+}
+.inputBox input
+{
+	/* pointer-events: none; */
+	position: relative;
+	background: transparent;
+	margin-top: 40px;
+	outline: none;
+	border: none;
+	width: 100%;
+	color: rgb(228, 218, 135);
+	padding-bottom: 10px;
+	font-size: 16px;
+	letter-spacing: 1px;
+	font-weight: 300;
+	border-bottom: 2px solid rgba(255,255,255,0.5);
+}
+
+.inputBox input:nth-child(n+6)
+{
+	transition: 0.3s;
+	pointer-events: all;
+	margin-bottom: 0px;
+	margin-top: 30px;
+	background: #fff;
+	padding: 8px 20px;
+	width: 110px;
+	cursor: pointer;
+	background: #ff3149;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 400;
+	border: none;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+}
+.inputBox input:nth-child(n+6):hover
+{
+	transition: 0.3s;
+	background: #ff132e;
+	border-radius: 10px;
+}
+.inputBox input:nth-child(n+6):focus
+{
+	background: #1bfaad;
+	color: #111;
+}
+
+.mimic
+{
+	transition: 0.3s;
+    pointer-events: all;
+	margin-bottom: 0px;
+	margin-top: 30px;
+	background: #fff;
+	padding: 8px 20px;
+	width: 150px;
+	cursor: pointer;
+	background: #db001a;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 400;
+	border: none;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+}
+.mimic:hover
+{
+	transition: 0.3s;
+	background: #ff0000;
+	color: #fff;
+	border-radius: 10px;
+}
+.mimic:focus
+{
+    background: #1bfaad;
+	color: #111;
+}
+
+
+.inputBox span
+{
+	position: relative;
+	left: 0;
+	font-size: 16px;
+	font-weight: 300;
+	display: inline-block;
+	pointer-events: none;
+	letter-spacing: 1px;
+	color: rgba(255,255,255,0.5);
+	transform: all 0.2s;
+}
+.imgBx
+{
+	position: relative;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+}
+.imgBx::before
+{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #ff3149;
+	transform-origin: bottom;
+	transform: skewX(-25deg) translateX(10%);
+}
+
+@media (max-width: 991px)
+{
+	.formBx
+	{
+		width: 100%;
+		padding: 0 50px;
+	}
+	.mybody
+	{
+		width: 100%;
+	}
+}
