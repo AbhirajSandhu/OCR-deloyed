@@ -6,8 +6,9 @@ var express			 = require('express'),
 	worker			 = new TesseractWorker(),
 	bodyParser 	   	 = require("body-parser"),
 	methodOverride   = require("method-override"),
-	session			 = require("express-session"),
-	MemoryStore      = require('memorystore')(session),
+	// session			 = require("express-session"),
+	// MemoryStore      = require('memorystore')(session),
+	expressSession   = require('cookie-session'),
 	flash			 = require('connect-flash'),
 	mongoose		 = require("mongoose"),
 	passport		 = require('passport'),
@@ -42,15 +43,30 @@ var cur;
 app.use(flash());
 
 //passport configuration
-app.use(session({
-    cookie: { maxAge: 86400000 },
-    store: new MemoryStore({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    }),
-	resave: false,
-	saveUninitialized: false,
-    secret: 'gagz di sheli canada chli'
-}))
+var expiryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+
+ const session = expressSession({
+   secret: 'gagz di sheli canada chli',
+   resave: false,
+   saveUninitialized: true,
+   cookie: {
+	 secureProxy: true,
+	 httpOnly: true,
+	 domain: 'example.com',
+	 expires: expiryDate
+   }
+ })
+
+ app.use(session)
+// app.use(session({
+//     cookie: { maxAge: 86400000 },
+//     store: new MemoryStore({
+//       checkPeriod: 86400000 // prune expired entries every 24h
+//     }),
+// 	resave: false,
+// 	saveUninitialized: false,
+//     secret: 'gagz di sheli canada chli'
+// }))
 // app.use(require("express-session")({
 // 	secret: "Voldmort is female",
 // 	resave: false,
