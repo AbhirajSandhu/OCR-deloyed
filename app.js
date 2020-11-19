@@ -7,6 +7,7 @@ var express			 = require('express'),
 	bodyParser 	   	 = require("body-parser"),
 	methodOverride   = require("method-override"),
 	session			 = require("express-session"),
+	MemoryStore      = require('memorystore')(session),
 	flash			 = require('connect-flash'),
 	mongoose		 = require("mongoose"),
 	passport		 = require('passport'),
@@ -41,11 +42,20 @@ var cur;
 app.use(flash());
 
 //passport configuration
-app.use(require("express-session")({
-	secret: "Voldmort is female",
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
 	resave: false,
-	saveUninitialized: false
-}));
+	saveUninitialized: false,
+    secret: 'gagz di sheli canada chli'
+}))
+// app.use(require("express-session")({
+// 	secret: "Voldmort is female",
+// 	resave: false,
+// 	saveUninitialized: false
+// }));
 
 //passport
 app.use(passport.initialize());
