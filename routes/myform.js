@@ -9,7 +9,8 @@ router.get('/view', middleware.isLoggedIn, function(req, res){
 		  if(err){
 			  console.log(err);
 		  }else{
-			  res.render("allforms", { forms : alldata , currentUser: req.user});
+			  const admin = "admin"
+			  res.render("allforms", { forms : alldata , currentUser: req.user, admin});
 		  }
 	  })
   });
@@ -76,7 +77,7 @@ router.put("/:id", function(req, res){
 })
 
 //DESTROY Form
-router.delete("/:id", middleware.checkFormOwnership, function(req, res){
+router.delete("/:id", function(req, res){
 	Form.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.render("index", {currentUser: req.user})

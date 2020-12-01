@@ -44,7 +44,7 @@
 
 
 <% forms.forEach(function(report) { %>
-    <% if(currentUser && report.author.id.equals(currentUser._id)){ %>
+    <% if((currentUser && report.author.id.equals(currentUser._id))||currentUser.username==admin){ %>
         
         <div class="margin">
           <div class="container">
