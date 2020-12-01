@@ -6,8 +6,6 @@ var express			 = require('express'),
 	worker			 = new TesseractWorker(),
 	bodyParser 	   	 = require("body-parser"),
 	methodOverride   = require("method-override"),
-	// session			 = require("express-session"),
-	// MemoryStore      = require('memorystore')(session),
 	expressSession   = require('cookie-session'),
 	flash			 = require('connect-flash'),
 	mongoose		 = require("mongoose"),
@@ -58,37 +56,19 @@ var expiryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
  })
 
  app.use(session)
-// app.use(session({
-//     cookie: { maxAge: 86400000 },
-//     store: new MemoryStore({
-//       checkPeriod: 86400000 // prune expired entries every 24h
-//     }),
-// 	resave: false,
-// 	saveUninitialized: false,
-//     secret: 'gagz di sheli canada chli'
-// }))
-// app.use(require("express-session")({
-// 	secret: "Voldmort is female",
-// 	resave: false,
-// 	saveUninitialized: false
-// }));
+
 
 //passport
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-//use local strategy on userschema to authenticate
+
 
 passport.serializeUser(User.serializeUser());
-//store user in session
-passport.deserializeUser(User.deserializeUser());
-//throw out user when out of session (unstore user)
 
-// app.get('/fakeUser', async (req,res) => {
-// 	const user = new User({email: 'san@gmail.com', username: 'sandhu'});
-// 	const newUser = await User.register(user, '123')
-// 	res.send(newUser);
-// })
+passport.deserializeUser(User.deserializeUser());
+
+
 app.use((req, res, next) => {
 	res.locals.currentUser = req.user;//we pass current user to everyone
 	res.locals.success = req.flash('success');
@@ -252,109 +232,3 @@ app.listen(5000, function(){
 	console.log("Server ON");
 })
 
-
-//flash
-// app.use(flash());
-// //session
-// const sessionOptions = { secret: 'gagan de sheli canada gai!', resave: false, saveUninitialized: false }
-
-// app.use(session(sessionOptions));
-
-// app.get('/viewcount', (req,res) => {
-// 	if (req.session.count) {
-// 		req.session.count += 1;
-// 	} else {
-// 		req.session.count = 1;
-// 	}
-// 	res.send(`You have viewed the page ${req.session.count} times`)
-// })
-
-// app.get('/reg', (req, res)=> {
-// 	const { username = 'Sandhu' } = req.query;
-// 	req.session.username = username;  
-// 	req.flash('success', 'Successfull');
-// 	res.redirect('/greet');
-// })
-// app.get('/greet', (req, res) => {
-// 	const { username } = req.session;
-// 	res.send(`Welcome Back, ${username} ${req.flash('success')}`);
-// 	//refresh page flash msh will dissappear
-// })
-
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
-// const userSchema = mongoose.Schema({
-//     name: {
-//         type: String,
-//         required: true
-//     },
-//     email: {
-//         type: String,
-//         required: true,
-
-//     },
-//     phone: {
-//         type: Number,
-//         required: true
-//     },
-//     password: {
-//         type: String,
-//         required: true
-//     }
-// })
-// const User = mongoose.model('user', userSchema)
-
-// app.post('/g_register',async function(req,res){
-// 	let name = req.body.username
-// 	let password = req.body.password
-// 	let email = req.body.email
-// 	let phone = req.body.phone
-
-// 	let newuser = new User({
-// 		name,
-// 		email,
-// 		phone,
-// 		password
-// 	  })
-	
-// 	  await newuser.save()
-// 	  cur = name
-// 	  res.render('form',{username:cur})
-// })
-
-// app.get('/register',function(req,res){
-// 	res.render('signup')
-// })
-
-
-// app.post('/g_login',async function(req,res){
-// 	try {
-// 		let name = req.body.username
-// 		let password = req.body.password
-		
-// 		const user = await User.find({name:name});
-		
-// 		if(user[0].password==password){
-// 			cur = name
-// 			res.render('form',{username:name})
-// 		}
-// 		else{
-// 			res.send("Wrong password try again...")
-// 		}
-// 	} catch (error) {
-// 		res.send("went wrong...")
-// 	}
-// })
-
-// app.post('/g_logout',async function(req,res){
-// 	try {
-// 		cur = '';
-// 		res.render("index")
-// 	} catch (error) {
-		
-// 	}
-// })

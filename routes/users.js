@@ -24,7 +24,6 @@ router.post("/register", function(req, res){
 		} else{
 			passport.authenticate("local")(req, res, function(){
 				req.flash("success", "Welcome " + user.username);
-				//local can be replaced with facebook twitter
 				res.redirect("/home");
 			})
 		}

@@ -1,18 +1,17 @@
-//all the middlewares go here
+
 var middlewareObj = {},
     Form          = require('../models/form');
 
 middlewareObj.checkFormOwnership = function(req, res, next){
-	//is user logged in
 	if(req.isAuthenticated()){
-		//findById tells info of clicked form and help in edits
 		Form.findById(req.params.id, function(err, foundForm){
 			if(err){
 				req.flash("error", "Campground Not Found!");
 				res.redirect("back");
 			} else{
-				//does user own the form?
-				if(foundForm.author.id.equals(req.user._id)){
+				
+				const admin = "admin";
+				if(foundForm.author.id.equals(req.user._id)||admin == req.user.username){
 					next();
 				} else{
 					req.flash("error", "Permission Denied!");
